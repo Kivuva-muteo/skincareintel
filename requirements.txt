@@ -1,0 +1,3 @@
+reportlab>=4.0
+# Optional: required only for direct Instagram monitoring
+instaloader>=4.12

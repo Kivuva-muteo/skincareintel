@@ -1,0 +1,26 @@
+{
+  "enabled": true,
+  "subreddits": [
+    "SkincareAddiction",
+    "AsianBeauty",
+    "MakeupAddiction",
+    "BeautyGuruChatter",
+    "Kenya",
+    "nairobi"
+  ],
+  "posts_per_subreddit": 30,
+  "max_comments_per_post": 60,
+  "published_within_hours": 72,
+  "min_comments_to_analyse": 3,
+  "min_severity_to_include": 2,
+  "comment_sentiment_batch": true,
+  "user_agent": "windows:SkincareIntel:v1.1 (contact: your-email@example.com)",
+  "request_delay_seconds": 1.5,
+  "max_retries": 2,
+  "oauth": {
+    "enabled": false,
+    "access_token": "",
+    "client_id": "",
+    "client_secret": ""
+  }
+}

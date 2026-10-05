@@ -1,0 +1,56 @@
+{
+  "enabled": true,
+  "sources": [
+    {
+      "name": "KEBS Market Surveillance",
+      "type": "scrape",
+      "url": "https://www.kebs.org/index.php/market-surveillance/",
+      "label": "KEBS",
+      "severity": 8
+    },
+    {
+      "name": "PPB Product Recalls",
+      "type": "scrape",
+      "url": "https://www.pharmacyboardkenya.org/recalls/",
+      "label": "PPB",
+      "severity": 9
+    },
+    {
+      "name": "PPB Safety Alerts",
+      "type": "scrape",
+      "url": "https://www.pharmacyboardkenya.org/safety-alerts/",
+      "label": "PPB",
+      "severity": 8
+    },
+    {
+      "name": "Google News: KEBS cosmetics",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=KEBS+cosmetics+Kenya&hl=en&gl=KE&ceid=KE:en",
+      "label": "KEBS/News",
+      "severity": 6
+    },
+    {
+      "name": "Google News: PPB recall Kenya",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=PPB+recall+Kenya+cosmetics&hl=en&gl=KE&ceid=KE:en",
+      "label": "PPB/News",
+      "severity": 7
+    },
+    {
+      "name": "Google News: Kenya cosmetics ban",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=Kenya+cosmetics+ban+recall+2026&hl=en&gl=KE&ceid=KE:en",
+      "label": "Regulatory/News",
+      "severity": 6
+    },
+    {
+      "name": "Standard Media: regulatory",
+      "type": "rss",
+      "url": "https://www.standardmedia.co.ke/rss/business.php",
+      "label": "Standard/KEBS",
+      "severity": 5
+    }
+  ],
+  "max_age_days": 14,
+  "min_severity_to_include": 5
+}

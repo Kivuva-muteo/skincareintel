@@ -1,0 +1,79 @@
+{
+  "enabled": false,
+  "influencers": [
+    {
+      "name": "SkincarewithDee",
+      "platform": "youtube",
+      "handle": "SkincarewithDee",
+      "channel_id": "",
+      "reach": "medium",
+      "tags": [
+        "skincare",
+        "kenya",
+        "dark skin"
+      ],
+      "rss": ""
+    },
+    {
+      "name": "Vee Beauty Kenya",
+      "platform": "youtube",
+      "handle": "VeeBeautyKenya",
+      "channel_id": "",
+      "reach": "medium",
+      "tags": [
+        "makeup",
+        "kenya",
+        "beauty"
+      ],
+      "rss": ""
+    },
+    {
+      "name": "Wanjiru Waweru",
+      "platform": "youtube",
+      "handle": "WanjiruWaweru",
+      "channel_id": "",
+      "reach": "medium",
+      "tags": [
+        "lifestyle",
+        "beauty",
+        "nairobi"
+      ],
+      "rss": ""
+    },
+    {
+      "name": "Lyra Beauty",
+      "platform": "youtube",
+      "handle": "LyraBeautyKE",
+      "channel_id": "",
+      "reach": "low",
+      "tags": [
+        "skincare",
+        "natural beauty",
+        "kenya"
+      ],
+      "rss": ""
+    },
+    {
+      "name": "Naomy Kwamboka",
+      "platform": "youtube",
+      "handle": "NaomyKwamboka",
+      "channel_id": "",
+      "reach": "medium",
+      "tags": [
+        "beauty",
+        "lifestyle",
+        "kenya"
+      ],
+      "rss": ""
+    }
+  ],
+  "published_within_hours": 72,
+  "min_views_youtube": 500,
+  "reach_severity_map": {
+    "low": 1,
+    "medium": 2,
+    "high": 3,
+    "mega": 4
+  },
+  "min_severity_to_include": 3
+}

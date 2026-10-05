@@ -1,0 +1,12 @@
+{
+  "enabled": false,
+  "api_key": "",
+  "max_results_per_brand": 3,
+  "published_within_hours": 72,
+  "min_view_count": 2000,
+  "min_severity_to_alert": 4,
+  "search_queries": [
+    "{brand} skincare review",
+    "{brand} recall controversy"
+  ]
+}

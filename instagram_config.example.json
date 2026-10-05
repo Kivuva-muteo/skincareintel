@@ -1,0 +1,93 @@
+{
+  "enabled": true,
+  "_setup_note": "For Instagram DIRECT monitoring (Layer 1): create a free burner Instagram account, add its username and password below, set instagram_login.enabled=true. The Social Signal RSS feeds (Layer 2) run automatically RIGHT NOW with no setup needed.",
+  "instagram_login": {
+    "enabled": false,
+    "username": "",
+    "password": "",
+    "session_file": "instagram_session",
+    "_note": "Create a free burner account e.g. skincareIntel_monitor on Instagram. Never use your personal account."
+  },
+  "brand_accounts": [
+    "niveakenya",
+    "garnierkenya",
+    "fentybeauty",
+    "lorealpariskenya",
+    "dovekenya",
+    "vaseline",
+    "cerave",
+    "theordinary",
+    "neutrogena",
+    "esteelauder"
+  ],
+  "kenya_hashtags": [
+    "skincareKenya",
+    "beautyKenya",
+    "NairobiBeauty",
+    "KenyanBeauty",
+    "skincareroutineKenya",
+    "KenyanInfluencer",
+    "beautyproductsKenya",
+    "darkskincare",
+    "blackskincare",
+    "skincareNairobi"
+  ],
+  "kenya_influencers": [
+    "skincarewithdee_",
+    "veebeautykenya",
+    "wanjiruwaweru",
+    "lyrabeautyke",
+    "naomykwamboka",
+    "glowwithwanjiku",
+    "kenyabeautyblog"
+  ],
+  "published_within_hours": 72,
+  "min_likes_brand_post": 100,
+  "min_likes_hashtag_post": 50,
+  "min_severity_to_include": 3,
+  "max_posts_per_account": 5,
+  "max_posts_per_hashtag": 8,
+  "request_delay_seconds": 4,
+  "social_rss_feeds": [
+    {
+      "name": "TikTok skincare Kenya",
+      "url": "https://news.google.com/rss/search?q=tiktok+skincare+beauty+kenya&hl=en&gl=KE&ceid=KE:en",
+      "severity": 5
+    },
+    {
+      "name": "Instagram beauty Kenya viral",
+      "url": "https://news.google.com/rss/search?q=instagram+beauty+skincare+kenya+viral&hl=en&gl=KE&ceid=KE:en",
+      "severity": 5
+    },
+    {
+      "name": "Kenya influencer skincare review",
+      "url": "https://news.google.com/rss/search?q=kenyan+influencer+skincare+beauty+review+2026&hl=en&gl=KE&ceid=KE:en",
+      "severity": 4
+    },
+    {
+      "name": "Social media cosmetics warning Kenya",
+      "url": "https://news.google.com/rss/search?q=social+media+cosmetics+warning+fake+kenya&hl=en&gl=KE&ceid=KE:en",
+      "severity": 6
+    },
+    {
+      "name": "TikTok skincare recall viral",
+      "url": "https://news.google.com/rss/search?q=tiktok+skincare+recall+dangerous+viral&hl=en",
+      "severity": 7
+    },
+    {
+      "name": "Facebook counterfeit beauty Kenya",
+      "url": "https://news.google.com/rss/search?q=facebook+counterfeit+beauty+skincare+kenya&hl=en&gl=KE&ceid=KE:en",
+      "severity": 7
+    },
+    {
+      "name": "Instagram skin reaction viral",
+      "url": "https://news.google.com/rss/search?q=instagram+skin+reaction+cream+lotion+viral&hl=en",
+      "severity": 6
+    },
+    {
+      "name": "WhatsApp beauty warning Kenya",
+      "url": "https://news.google.com/rss/search?q=whatsapp+beauty+fake+warning+kenya&hl=en&gl=KE&ceid=KE:en",
+      "severity": 6
+    }
+  ]
+}
