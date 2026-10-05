@@ -1,114 +1,65 @@
-# SkincareIntel — Fixed Build
+# SkincareIntel
 
-This build repairs the broken Instagram integration, reduces false positives, improves Reddit resilience, and removes credentials and generated data from the distributable package.
+A Python monitoring agent that tracks 11 skincare and beauty brands in the Kenyan market and sends alerts when something important appears: product controversies, regulatory notices, viral reviews and price or reputation signals.
 
-## Important security action
+It collects mentions from several public sources, removes duplicates, scores how serious each item is, and delivers the important ones to Telegram, Slack or email, with a weekly summary report.
 
-The original RAR contained active-looking credentials. Rotate these before using the project again:
+## Features
 
-- Instagram password/session
-- Gmail App Password
-- Telegram bot token
-- YouTube API key
-- Anthropic/Claude API key
+- **Multi-source monitoring** across RSS feeds, the YouTube Data API v3, Reddit, Kenyan influencer channels, Instagram (optional) and Kenyan regulatory sources
+- **Noise reduction** using Jaccard-similarity deduplication of near-identical items and alert deduplication so the same story is not sent twice
+- **Severity scoring and trending** so a growing issue ranks higher than a one-off mention
+- **Alert delivery** by Telegram, Slack and email, with minimum-severity thresholds and per-run alert limits
+- **Weekly reports** in PDF and HTML
+- **Optional AI verification** of higher-severity alerts to reduce false positives (disabled by default)
+- **Run health summary** at the end of each run, plus a self-test script
 
-The fixed ZIP contains blank credential fields only.
+## How it works
 
-## Setup on Windows
-
-1. Install Python 3.10 or newer.
-2. Open Command Prompt inside this folder.
-3. Install dependencies:
-
-```bat
-python -m pip install -r requirements.txt
+```
+ RSS | YouTube | Reddit | Influencers | Instagram | Regulators
+                          |
+                     agent.py  (orchestrator)
+                          |
+        deduplicate -> score severity -> trend over time
+                          |
+              Telegram | Slack | Email | Weekly report
 ```
 
-4. Copy the secrets template:
+## Project structure
 
-```bat
-copy secrets.example.bat secrets.bat
+| File | Purpose |
+|---|---|
+| `agent.py` | Main orchestrator that runs all monitors and sends alerts |
+| `youtube_monitor.py` | YouTube search and view-count monitoring |
+| `reddit_monitor.py` | Reddit mention monitoring |
+| `Instagram_monitor.py` | Instagram monitoring (optional) |
+| `influencer_monitor.py` | Kenyan influencer channel monitoring |
+| `kenya_regulatory_monitor.py` | Regulatory and recall notices |
+| `weekly_report.py` / `weekly_state.py` | Weekly PDF/HTML report and its state tracking |
+| `self_test.py` | Quick checks that the setup works |
+| `config.json` | Brands, keywords and general settings |
+| `*.example.json`, `secrets.example.bat` | Templates for your own keys and settings |
+| `run.bat` | Windows launcher |
+
+## Getting started
+
+**Requirements:** Python 3.9 or newer.
+
+1. **Clone the repo and install dependencies**
+```bash
+   git clone https://github.com/Kivuva-muteo/skincareintel.git
+   cd skincareintel
+   pip install -r requirements.txt
 ```
 
-5. Open `secrets.bat` and add only the credentials for services you use.
-6. Run the offline checks:
-
-```bat
-python self_test.py
+2. **Create your config files.** Copy each example file and fill in only the services you want to use:
+```bash
+   copy youtube_config.example.json youtube_config.json
+   copy telegram_config.example.json telegram_config.json
+   copy email_config.example.json email_config.json
+   copy ai_config.example.json ai_config.json
+   copy instagram_config.example.json Instagram_config.json
+   copy secrets.example.bat secrets.bat
 ```
-
-7. Start the agent:
-
-```bat
-run.bat
-```
-
-`run.bat` automatically loads `secrets.bat` when it exists.
-
-## Service notes
-
-### Instagram
-
-- The module and config are now correctly named `instagram_monitor.py` and `instagram_config.json`.
-- Social RSS monitoring works without an Instagram login.
-- Direct Instagram monitoring requires `instaloader` and either:
-  - `INSTAGRAM_USERNAME` and `INSTAGRAM_PASSWORD` in `secrets.bat`, or
-  - credentials in `instagram_config.json` with `instagram_login.enabled` set to `true`.
-- A saved `instagram_session` can be reused without storing the password.
-
-### YouTube
-
-Set `YOUTUBE_API_KEY` in `secrets.bat`. The agent now requires a real brand/alias match in the video title, description, or channel before accepting a search result. Ambiguous names such as **The Ordinary** require skincare/product context.
-
-### Reddit
-
-The monitor now:
-
-- retries conservatively after rate limits;
-- tries both standard and old Reddit public JSON endpoints;
-- falls back to subreddit RSS for post discovery;
-- can use an approved Reddit application token or application-only OAuth credentials from `secrets.bat`;
-- scores post text when comments are unavailable.
-
-Public Reddit access can still be blocked depending on the network/IP. For dependable access, use credentials authorized by Reddit and comply with Reddit’s current Data API terms.
-
-### Email/Gmail
-
-Set these values in `secrets.bat`:
-
-- `SMTP_USER`
-- `SMTP_PASS`
-- `EMAIL_FROM`
-- `EMAIL_TO`
-
-For Gmail, `SMTP_PASS` must be a Google App Password created after enabling 2-Step Verification. Do not use the normal Gmail password.
-
-### Telegram
-
-Set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`. Start a private chat with the bot before the first alert, or add it to the target group. The code now sends via POST and gives a clearer message for HTTP 403 errors.
-
-## Configuration files
-
-Sensitive local config files are intentionally ignored by Git. Matching `.example.json` files are included as safe templates.
-
-Generated files are also ignored:
-
-- `agent.log`
-- `state.json`
-- `weekly_state.json`
-- `reports/`
-- Python cache files
-
-## Main fixes included
-
-- Fixed Python `true`/`True` error in Instagram defaults.
-- Fixed Instagram filename/config case mismatch.
-- Removed hard-coded Instagram credentials.
-- Added environment-variable credential support.
-- Prevented YouTube search noise from being accepted without a validated brand mention.
-- Prevented rejected YouTube results from being marked as seen prematurely.
-- Tightened KEBS/PPB filtering to exclude unrelated medicine, condom, and general-product recalls.
-- Added stricter word-boundary and contextual brand matching across RSS, Reddit, regulatory, Instagram, and YouTube sources.
-- Added Reddit OAuth support and RSS fallback.
-- Improved Gmail and Telegram error messages.
-- Removed old logs, reports, states, sessions, and caches from the shared build.
+   On
